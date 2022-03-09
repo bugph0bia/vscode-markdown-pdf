@@ -5,6 +5,40 @@
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 {{{style}}}
 {{{mermaid}}}
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- Fontawesome -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript">
+    $(function(){
+        $('body').find(':contains(":fa")').not('code').each(function(){
+            var htmlText = $(this).html();
+            $(this).html(htmlText.replace(/:(fa-[\w-]+?):/g, '<i class="fa $1"></i>'));
+        });
+    });
+</script>
+
+<!-- Mathjax -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax:{
+            inlineMath: [['\$','\$'],['\\(','\\)']],
+            processEscapes: true
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        }
+    });
+    // left-align
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "2em"
+    });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </head>
 <body>
   <script>

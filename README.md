@@ -7,6 +7,7 @@ This extension converts Markdown files to pdf, html, png or jpeg files.
 ## Table of Contents
 <!-- TOC depthFrom:2 depthTo:2 updateOnSave:false -->
 
+- [Fork](#Fork)
 - [Features](#features)
 - [Install](#install)
 - [Usage](#usage)
@@ -21,6 +22,77 @@ This extension converts Markdown files to pdf, html, png or jpeg files.
 <!-- /TOC -->
 
 <div class="page"/>
+
+## Fork
+
+This repository was Forked from [yzane/vscode-markdown-pdf (v1.4.4)](https://github.com/yzane/vscode-markdown-pdf) to add features.  
+The license is [LICENSE.txt](. /LICENSE.txt).  
+
+### Note
+
+* Since it has the same extension name as the Fork source, it shares the same settings. If you install the Fork source extension together, these may not work properly.
+* Additional features is available via CDN. Internet connection must be available at the time of execution.
+
+### Additional Features
+
+Additional support for the following features
+* [MathJax](https://www.mathjax.org/)
+* [Font Awesome 4](https://fontawesome.com/v4/icons/)
+
+#### Mathematics (MathJax)
+
+INPUT
+```
+inline start. $ \frac{\pi}{2} = \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 $ inline end.
+
+block start  
+\\[
+    \frac{\pi}{2} =
+    \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2
+\\]
+block end  
+```
+
+OUTPUT
+
+![PlantUML](images/MathJax.png)
+
+NOTE
+* Some backslash entries need to be escaped, such as `\\`, because the process performs formula parsing after Markdown rendering.
+
+#### Icons (Font Awesome 4)
+
+INPUT
+```
+:fa-user: User  
+:fa-calendar: Calendar  
+```
+
+OUTPUT
+
+![PlantUML](images/FontAwesome.png)
+
+NOTE
+* Use jQuery.
+* Like pictograms, codes enclosed in `:` are recognized. If it is processed first as a pictogram during Markdown rendering, it will not be iconified, but FontAwesome will be `:fa-xxx:` and there should be no code duplication.
+
+### Usage in the local environment
+
+To package and install extensions in the local environment, follow the steps below.
+
+1. Install npm.
+2. Go to the folder where you cloned this repository, and execute the following command.
+
+```
+# Install VS Code Extension Manager
+# * Installed in npm_modules in the folder.
+$ npm i -D vsce
+# Package (markdown-pdf-x.x.x.vsix is created.)
+# * No Publish (extension release) will be done.
+$ npx vsce package
+# Install package in VS Code
+$ code --install-extension markdown-pdf-x-x.x.x.vsix
+```
 
 ## Features
 
@@ -582,25 +654,12 @@ Please use the following to insert a page break.
 
 ## [Release Notes](CHANGELOG.md)
 
-### 1.4.4 (2020/03/19)
-* Change: mermaid javascript reads from URL instead of from local file
-  * Add: `markdown-pdf.mermaidServer` option
-  * add an option to disable mermaid [#175](https://github.com/yzane/vscode-markdown-pdf/issues/175)
-* Add: `markdown-pdf.plantumlServer` option
-  * support configuration of plantUML server [#139](https://github.com/yzane/vscode-markdown-pdf/issues/139)
-* Add: configuration scope
-  * extend setting 'headerTemplate' with scope\.\.\. [#184](https://github.com/yzane/vscode-markdown-pdf/pull/184)
-* Update: [slug](https://github.com/yzane/vscode-markdown-pdf/commit/3f4aeaa724999c46fc37423d4b188fd7ce72ffce) for markdown-it-named-headers
-* Update: markdown.css, markdown-pdf.css
-* Update: dependent packages
-* Fix: Fix for issue \#186 [#187](https://github.com/yzane/vscode-markdown-pdf/pull/187)
-* Fix: move the Meiryo font to the end of the font-family setting
-  * Meiryo font causing \\ to show as Â¥ [#83](https://github.com/yzane/vscode-markdown-pdf/issues/83)
-  * Backslash false encoded [#124](https://github.com/yzane/vscode-markdown-pdf/issues/124)
-  * Errors in which í•œê¸€\(korean word\) is not properly printed [#148](https://github.com/yzane/vscode-markdown-pdf/issues/148)
-* Fix: Improve the configuration schema of package.json
-    * Some settings can now be set from the settings editor.
-
+### 0.1.0 (2022/03/09)
+* **fork repogitory, and reset version.**
+* Change: Support MathJax
+  * Update: template.html
+* Change: Support Font Awesome 4
+  * Update: template.html
 
 ## License
 

@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.1.0 (2022/03/09)
+* **fork repogitory, and reset version.**
+* Change: Support MathJax
+  * Update: template.html
+* Change: Support Font Awesome 4
+  * Update: template.html
+
 ## 1.4.4 (2020/03/19)
 * Change: mermaid javascript reads from URL instead of from local file
   * Add: `markdown-pdf.mermaidServer` option

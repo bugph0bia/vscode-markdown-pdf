@@ -5,6 +5,7 @@
 ## 目次
 <!-- TOC depthFrom:2 depthTo:2 updateOnSave:false -->
 
+- [Fork](#Fork)
 - [機能](#機能)
 - [インストール](#インストール)
 - [使い方](#使い方)
@@ -19,6 +20,77 @@
 <!-- /TOC -->
 
 <div class="page"/>
+
+## Fork
+
+このリポジトリは、 [yzane/vscode-markdown-pdf (v1.4.4)](https://github.com/yzane/vscode-markdown-pdf) から Fork して機能追加を行ったものです。  
+ライセンスは [LICENSE.txt](./LICENSE.txt) に記載の通りです。  
+
+### 注意事項
+
+* Fork 元と同じ拡張機能名のため、設定項目等も共有します。Fork 元の拡張機能を一緒にインストールするとうまく動かないかもしれません。
+* 追加機能は CDN を利用します。実行時にインターネット接続している必要があります。
+
+### 追加機能
+
+以下の機能を追加サポートしています。
+* [MathJax](https://www.mathjax.org/)
+* [Font Awesome 4](https://fontawesome.com/v4/icons/)
+
+#### 数式 (MathJax)
+
+INPUT
+```
+inline start. $ \frac{\pi}{2} = \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 $ inline end.
+
+block start  
+\\[
+    \frac{\pi}{2} =
+    \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2
+\\]
+block end  
+```
+
+OUTPUT
+
+![PlantUML](images/MathJax.png)
+
+NOTE
+* Markdown レンダリング後に処理が数式解析が行われるため、バックスラッシュの記入場所によっては `\\` のようにエスケープする必要がある。
+
+#### アイコン (Font Awesome 4)
+
+INPUT
+```
+:fa-user: User  
+:fa-calendar: Calendar  
+```
+
+OUTPUT
+
+![PlantUML](images/FontAwesome.png)
+
+NOTE
+* jQuery を使用します。
+* 絵文字と同様に `:` で囲んだコードを認識する。Markdown レンダリング時に絵文字として先に処理されてしまうとアイコン化が行われないことになるが、FontAwesome は `:fa-xxx:` になりコードの重複はないはず。
+
+### ローカル環境における使用方法
+
+ローカル環境における拡張機能のパッケージ化とインストールは下記の手順で行います。  
+
+1. npm をインストールします。
+2. 本リポジトリをクローンしたフォルダへ移動して下記のコマンドを実行します。
+
+```
+# VS Code Extension Manager をインストール
+# ※フォルダ内の npm_modules にインストールされる
+$ npm i -D vsce
+# パッケージ化して markdown-pdf-x.x.x.vsix を作成
+# ※Publish（拡張機能の公開）は行われない
+$ npx vsce package
+# VS Code にパッケージをインストール
+$ code --install-extension markdown-pdf-x-x.x.x.vsix
+```
 
 ## 機能
 
@@ -576,25 +648,12 @@ Visual Studio Code の `files.autoGuessEncoding` オプションを使うと、�
 
 ## [Release Notes](CHANGELOG.md)
 
-## 1.4.4 (2020/03/19)
-* Change: mermaid javascript reads from URL instead of from local file
-  * Add: `markdown-pdf.mermaidServer` option
-  * add an option to disable mermaid [#175](https://github.com/yzane/vscode-markdown-pdf/issues/175)
-* Add: `markdown-pdf.plantumlServer` option
-  * support configuration of plantUML server [#139](https://github.com/yzane/vscode-markdown-pdf/issues/139)
-* Add: configuration scope
-  * extend setting 'headerTemplate' with scope\.\.\. [#184](https://github.com/yzane/vscode-markdown-pdf/pull/184)
-* Update: [slug](https://github.com/yzane/vscode-markdown-pdf/commit/3f4aeaa724999c46fc37423d4b188fd7ce72ffce) for markdown-it-named-headers
-* Update: markdown.css, markdown-pdf.css
-* Update: dependent packages
-* Fix: Fix for issue \#186 [#187](https://github.com/yzane/vscode-markdown-pdf/pull/187)
-* Fix: move the Meiryo font to the end of the font-family setting
-  * Meiryo font causing \\ to show as Â¥ [#83](https://github.com/yzane/vscode-markdown-pdf/issues/83)
-  * Backslash false encoded [#124](https://github.com/yzane/vscode-markdown-pdf/issues/124)
-  * Errors in which í•œê¸€\(korean word\) is not properly printed [#148](https://github.com/yzane/vscode-markdown-pdf/issues/148)
-* Fix: Improve the configuration schema of package.json
-    * Some settings can now be set from the settings editor.
-
+### 0.1.0 (2022/03/09)
+* **fork repogitory, and reset version.**
+* Change: Support MathJax
+  * Update: template.html
+* Change: Support Font Awesome 4
+  * Update: template.html
 
 ## License
 
