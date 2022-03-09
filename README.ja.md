@@ -43,12 +43,12 @@ INPUT
 ```
 inline start. $ \frac{\pi}{2} = \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 $ inline end.
 
-block start  
+block start.  
 \\[
     \frac{\pi}{2} =
     \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2
 \\]
-block end  
+block end.  
 ```
 
 OUTPUT
@@ -56,7 +56,7 @@ OUTPUT
 ![PlantUML](images/MathJax.png)
 
 NOTE
-* Markdown レンダリング後に処理が数式解析が行われるため、バックスラッシュの記入場所によっては `\\` のようにエスケープする必要がある。
+* Markdown レンダリング後に処理が数式解析が行われるため、バックスラッシュの記入場所によっては `\\` のようにエスケープする必要があります。
 
 #### アイコン (Font Awesome 4)
 
@@ -72,7 +72,7 @@ OUTPUT
 
 NOTE
 * jQuery を使用します。
-* 絵文字と同様に `:` で囲んだコードを認識する。Markdown レンダリング時に絵文字として先に処理されてしまうとアイコン化が行われないことになるが、FontAwesome は `:fa-xxx:` になりコードの重複はないはず。
+* 絵文字と同様に `:` で囲んだコードを認識する。Markdown レンダリング時に絵文字として先に処理されてしまうとアイコン化が行われないことになりますが、FontAwesome は `:fa-xxx:` になりコードの重複はないはずです。
 
 ### ローカル環境における使用方法
 
@@ -85,9 +85,11 @@ NOTE
 # VS Code Extension Manager をインストール
 # ※フォルダ内の npm_modules にインストールされる
 $ npm i -D vsce
+
 # パッケージ化して markdown-pdf-x.x.x.vsix を作成
 # ※Publish（拡張機能の公開）は行われない
 $ npx vsce package
+
 # VS Code にパッケージをインストール
 $ code --install-extension markdown-pdf-x-x.x.x.vsix
 ```
