@@ -26,7 +26,7 @@ This extension converts Markdown files to pdf, html, png or jpeg files.
 ## Fork
 
 This repository was Forked from [yzane/vscode-markdown-pdf (v1.4.4)](https://github.com/yzane/vscode-markdown-pdf) to add features.  
-The license is [LICENSE.txt](. /LICENSE.txt).  
+The license is [LICENSE.txt](./LICENSE.txt).  
 
 ### Note
 
@@ -45,12 +45,12 @@ INPUT
 ```
 inline start. $ \frac{\pi}{2} = \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 $ inline end.
 
-block start  
+block start.  
 \\[
     \frac{\pi}{2} =
     \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2
 \\]
-block end  
+block end.  
 ```
 
 OUTPUT
@@ -74,7 +74,7 @@ OUTPUT
 
 NOTE
 * Use jQuery.
-* Like pictograms, codes enclosed in `:` are recognized. If it is processed first as a pictogram during Markdown rendering, it will not be iconified, but FontAwesome will be `:fa-xxx:` and there should be no code duplication.
+* Like emoji, codes enclosed in `:` are recognized. If it is processed first as a emoji during Markdown rendering, it will not be iconified, but FontAwesome will be `:fa-xxx:` and there should be no code duplication.
 
 ### Usage in the local environment
 
@@ -87,9 +87,11 @@ To package and install extensions in the local environment, follow the steps bel
 # Install VS Code Extension Manager
 # * Installed in npm_modules in the folder.
 $ npm i -D vsce
+
 # Package (markdown-pdf-x.x.x.vsix is created.)
 # * No Publish (extension release) will be done.
 $ npx vsce package
+
 # Install package in VS Code
 $ code --install-extension markdown-pdf-x-x.x.x.vsix
 ```
