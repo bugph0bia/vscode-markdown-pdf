@@ -96,6 +96,20 @@ $ npx vsce package
 $ code --install-extension markdown-pdf-x-x.x.x.vsix
 ```
 
+### Hacks that solve `TimeoutError: Navigation timeout of 30000 ms exceeded`
+https://github.com/yzane/vscode-markdown-pdf/issues/189#issuecomment-800777223
+
+If you are in a proxy environment, the following procedure may solve the problem:  
+
+1. Open `<UserProfilePath>/.vscode/extensions/[yzane|bugph0bia].markdown-pdf-x.x.x/extension.js` in editor.
+2. Go to line 401.
+3. Edit as follows, and restart VSCode.
+
+```diff
+- args: ['--lang='+vscode.env.language, '--no-sandbox', '--disable-setuid-sandbox']
++ args: ['--lang='+vscode.env.language, '--no-sandbox', '--disable-setuid-sandbox', '--proxy-server=http://<proxy>:<port>']
+```
+
 ## Features
 
 Supports the following features
